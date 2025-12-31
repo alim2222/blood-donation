@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blood Donation Home</title>
+
+    <style>
+        
+        
+            .menu-title {
+                margin-bottom: 20px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #1d3557;
+            }
+
+
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #f8f9fa, #edf2f4);
+            color: #333;
+            padding: 75px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(120deg, #e63946, #ff4d6d);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .header p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* Container */
+        .container {
+            padding: 40px 20px;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        /* Action Buttons */
+        .actions {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .actions a {
+            display: inline-block;
+            margin: 10px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 6px 15px rgba(230,57,70,0.35);
+            transition: 0.3s;
+        }
+
+        .actions a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(230,57,70,0.5);
+        }
+
+        /* Two Column Layout */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+
+        /* Section */
+        .section {
+            background: transparent;
+        }
+
+        .section h2 {
+            color: #1d3557;
+            margin-bottom: 20px;
+            font-size: 24px;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .section h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 6px;
+            height: 80%;
+            background: linear-gradient(#e63946, #ff6b6b);
+            border-radius: 5px;
+        }
+
+        /* Cards */
+        .card-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background: linear-gradient(90deg, #e63946, #ff6b6b);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            color: #e63946;
+            font-size: 19px;
+        }
+
+        .card p {
+            margin: 6px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #1d3557, #457b9d);
+        }
+
+        .empty {
+            background: white;
+            padding: 18px;
+            border-radius: 14px;
+            text-align: center;
+            color: #777;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 18px;
+            background: linear-gradient(120deg, #1d3557, #0b2545);
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+
+       
+            .donor-card {
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+            }
+            
+            /* যেই donor-এ scroll হবে */
+            .donor-card:target {
+                background-color: #e6ffe6;
+                border: 2px solid green;
+            }
+            
+            
+            .footer {
+                position: fixed;      /* 🔥 footer steady রাখে */
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(120deg, #1d3557, #0b2545);
+                color: white;
+                padding: 14px 0;
+                text-align: center;
+                z-index: 999;
+            }
+            
+            .footer-content {
+                max-width: 1100px;
+                margin: auto;
+            }
+            
+            .footer-links a {
+                color: #ffb703;
+                text-decoration: none;
+                font-weight: bold;
+                margin: 0 6px;
+            }
+            
+            .footer-links a:hover {
+                text-decoration: underline;
+            }
+            
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>🩸 Blood Donation Platform</h1>
+        <p>Donate blood, save lives — your one step can save many</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Action Buttons -->
+        <div class="actions">
+            <a href="{% url 'add_donor' %}">➕ Add Donor</a>
+            <a href="{% url 'request_blood' %}">🚨 Request Blood</a>
+        </div>
+
+        <!-- Dashboard -->
+        <div class="dashboard">
+
+            <!-- Donors -->
+            <div class="section">
+                <h2>Available Donors</h2>
+                <div class="card-list">
+                    {% for donor in donors %}
+                    <div class="card" id="donor-{{ donor.id }}">
+                        <h3>{{ donor.name }}</h3>
+                        <p><strong>Blood Group:</strong> <span class="badge">{{ donor.blood_group }}</span></p>
+                        <p><strong>Phone:</strong> {{ donor.phone }}</p>
+                        <p><strong>Location:</strong> {{ donor.location }}</p>
+                        <p><strong>Last Donation:</strong>
+                            {% if donor.last_donation_date %}
+                                {{ donor.last_donation_date }}
+                            {% else %}
+                                Not donated yet
+                            {% endif %}
+                        </p>
+                    </div>
+                    {% empty %}
+                    <div class="empty">No donors available.</div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+
+            <!-- Requests -->
+            <div class="section">
+                <h2>Blood Requests</h2>
+                <div class="card-list">
+                    {% for req in requests %}
+                    <div class="card">
+                        <h3>{{ req.patient_name }}</h3>
+                        <p><strong>Blood Needed:</strong> <span class="badge">{{ req.blood_group }}</span></p>
+                        <p><strong>Hospital:</strong> {{ req.hospital }}</p>
+                        <p><strong>Contact:</strong> {{ req.phone }}</p>
+                        <p><strong>Needed Date:</strong> {{ req.needed_date }}</p>
+
+                    </div>
+                    {% empty %}
+                    <div class="empty">No blood requests yet.</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+ 
+    {% comment %} <div class="menu-box">
+        
+    
+        <a href="/add-donor/">➕ Add Donor</a>
+        <a href="/request-blood/">🚨 Request Blood</a>
+        <a href="/login/">🔑 Login</a>
+        <a href="/signup/">📝 Signup</a>
+    </div> {% endcomment %}
+    <!-- Footer -->
+    <!-- Footer -->
+<div class="footer">
+    <div class="footer-content">
+        <p>© 2025 Blood Donation Platform | Save Life ❤️</p>
+
+        <div class="footer-links">
+            {% if user.is_authenticated %}
+                <span>Welcome, {{ user.username }}</span> |
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <span>|</span>
+                <a href="{% url 'signup' %}">Signup</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

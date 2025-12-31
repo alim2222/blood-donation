@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Request Blood</title>
+
+    <style>
+        body {
+            background: linear-gradient(120deg, #8e0e00, #1f1c18);
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 400px;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .alert {
+            background: #e63946;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1d3557;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #e63946;
+            box-shadow: 0 0 6px rgba(230,57,70,0.4);
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #e63946;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #c1121f;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .back-link:hover {
+            color: #e63946;
+        }
+
+        .icon {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="icon">🚨</div>
+
+        <div class="alert">
+            Urgent Blood Request
+        </div>
+
+        <h2>Request Blood</h2>
+        <p>Please provide correct information to get help quickly</p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <input type="text" name="patient_name" placeholder="Patient Name" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="blood_group" placeholder="Blood Group (e.g. A+)" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="hospital" placeholder="Hospital Name" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="phone" placeholder="Contact Phone Number" required>
+            </div>
+
+            <div class="form-group">
+                <input type="date" name="needed_date" required>
+            </div>
+
+            <button type="submit" class="btn">🚑 Submit Request</button>
+        </form>
+
+        <a href="{% url 'home' %}" class="back-link">← Back to Home</a>
+    </div>
+
+</body>
+</html>
