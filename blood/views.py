@@ -20,10 +20,9 @@ def add_donor(request):
             location=request.POST['location'],
             last_donation_date=request.POST.get('last_donation_date') or None,
         )
-        # donor add হওয়ার পর home page এ গিয়ে ঐ donor এ scroll করবে
+
         return redirect(f"/#donor-{donor.id}")
 
-    # 👇 GET request হলে এইটা চলবে
     return render(request, 'add_donor.html')
 
 
